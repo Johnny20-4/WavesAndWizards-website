@@ -1,0 +1,326 @@
+/*Default style for the entire body of the page.*/
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/*Horizontal rule, AKA a line.*/
+hr {
+    width: 96%;
+    color: dimgrey;
+    height: 1px;
+    margin: 2px;
+}
+
+/* Section with background image */
+.bg {
+    height: 100%;
+    background-image: url('img/bg.png'), url('img/bgrepeat.png');
+    background-size: contain, cover;
+    background-position: center, center;
+	background-repeat: no-repeat, no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    position: relative;
+    box-sizing: border-box;
+}
+.imagetest{
+	height: 100%;
+    background-image: url('img/bgrepeat.png');
+    background-size: cover;
+    background-position: center;
+	background-repeat: repeat;
+	display: fill;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    position: relative;
+    box-sizing: border-box;
+}
+.imagesdownbelow{
+	max-width:100%;
+	max-height:100%;
+}
+/*Social media logos container*/
+#social {
+    display: flex; /* Flexbox layout */
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center; /* Align items vertically */
+    position: absolute; /* Position it anywhere on the page */
+    top: 10px; /* Distance from the top */
+    left: 10px; /* Distance from the left */
+}
+
+/*Actual social media images*/
+#social img {
+    width: 40px; /* Set the size of the logos */
+    height: 40px; /* Set the size of the logos */
+    margin-right: 15px; /* Space between the icons */
+    padding: 3px;
+}
+
+/*Ensures that the last icon doesn't have a margin and mess up the containing box*/
+#social img:last-child {
+    margin-right: 0; /* Remove the margin for the last icon */
+}
+
+#game_description {
+    color: white;
+    font-size: 1.5vw;   /*Relative sizing units instead of px. This is to scale the text with screen size*/
+    margin: 20px 5px 50px 5px;
+    border: 2px solid black;
+    padding: 10px;  /*Padding is margins, but on the inside.*/
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.3);
+    position: relative;     /*Object's position is relative to its parent element*/
+}
+
+/* Game logo. This is forced to the center, by default */
+.logo {
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: auto;
+    max-width: 50%;
+    top: 0;
+}
+.otherlogo {
+    position: absolute;
+	right: 0;
+	top: 10px;
+    align-content: right;
+    margin: auto;
+    height: auto;
+    max-width: 25%;
+}
+/* Carousel styles */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1180px; /* Maximum width for larger screens */
+    margin: 20px auto;
+    overflow: hidden; /* Hide anything that goes beyond the bounds of the container */
+    border: 3px solid black;
+}
+
+.carousel img {
+    width: 100%; /* Set image width to fill the container */
+    height: 650px; /* Set a fixed height for all images */
+    object-fit: cover; /* Ensure the image covers the container without distortion */
+    display: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/*When the carousel is on the current image in the list, make sure it's visible!*/
+.carousel img.active{
+    display: block;
+    opacity: 1;
+}
+
+/*Style for the -> and <- arrows */
+.carousel .prev,
+.carousel .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5); /*Red-Green-Blue-Alpha. This is black with 50% opacity*/
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.carousel .prev {
+    left: 10px;
+}
+
+.carousel .next {
+    right: 10px;
+}
+
+/* Responsive Design for Carousel Images */
+@media (max-width: 768px) {
+    .carousel img {
+        height: 300px; /* Resize image height for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel img {
+        height: 200px; /* Further resize image height for very small screens */
+    }
+}
+
+/* Lightbox style. The lightbox is the image that pops up when you click on it */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+/* Button styles - Responsive adjustments */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #ff6600;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #cc5200;
+}
+
+.details {
+    background-color: #5d2680;
+    padding: 10px;
+    font-size: 1vw;
+}
+
+/* Awards Section */
+.awards {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 50px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.awards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.award-item {
+    font-style: italic;
+    width: 45%;
+    background: #6a2b92;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design for other elements*/
+@media (max-width: 1024px) {
+    /* Adjust the bg section height and padding for medium screens */
+    .bg {
+        height: 80vh;
+        padding: 40px 20px;
+    }
+
+    .logo {
+        width: 120px; /* Adjust logo size when the screen size lowers */
+    }
+
+    .btn {
+        font-size: 1em; /*Another type of relative units.*/
+        padding: 8px 16px;
+    }
+
+    #game_description {
+        font-size: 2.5vw;
+        margin: 10px 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Adjust bg section height and padding for smaller screens */
+    .bg {
+        height: 70vh;
+        padding: 30px 15px;
+    }
+
+    .logo {
+        width: 150px; /* Adjust logo size for small screens */
+    }
+
+    .btn {
+        font-size: 1em;
+        padding: 8px 16px;
+    }
+
+    #game_description {
+        font-size: 3.5vw;
+        margin: 10px 5px;
+    }
+
+    /* Make the social media icons smaller on mobile */
+    #social img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Adjust awards section for mobile */
+    .award-item {
+        width: 90%; /* Make award items take full width on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjust logo size even further for very small screens */
+    .logo {
+        width: 100px;
+    }
+
+    /* Adjust font size even more for readability */
+    #game_description {
+        font-size: 4vw;
+    }
+
+    .btn {
+        font-size: 0.9em;
+        padding: 8px 14px;
+    }
+
+    .awards-container {
+        flex-direction: column; /* Stack awards vertically */
+    }
+}
+
+/* Parallax Section - Comment this out if you removed it on the HTML side. Another 60 cool point will be deducated.*/
+.parallax {
+    height: 50vh;
+    background-color: royalblue;
+    background-image: url('img/Godimagev2.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+	background-repeat: repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2em;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+

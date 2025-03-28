@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WavesAndWizards</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        //JavaScript! The entire functionality relies on the page being loaded first. This is mostly for the image carousel. It will automatically scroll through the images, unless the user clicks on one of the forward or back arrows.
+        document.addEventListener("DOMContentLoaded", function() {
+                    let images = document.querySelectorAll(".carousel img");
+                    let index = 0;
+                    let lightbox = document.createElement("div");
+                    let lightboxImg = document.createElement("img");
+                    let prevBtn = document.createElement("button");
+                    let nextBtn = document.createElement("button");
+
+                    lightbox.classList.add("lightbox");
+                    lightbox.appendChild(lightboxImg);
+                    document.body.appendChild(lightbox);
+
+                    prevBtn.innerHTML = "&#10094;";
+                    nextBtn.innerHTML = "&#10095;";
+                    prevBtn.classList.add("prev");
+                    nextBtn.classList.add("next");
+                    document.querySelector(".carousel").appendChild(prevBtn);
+                    document.querySelector(".carousel").appendChild(nextBtn);
+
+                    function showImage(i) {
+                        images[index].classList.remove("active");
+                        index = (i + images.length) % images.length;
+                        images[index].classList.add("active");
+                    }
+
+                    images[0].classList.add("active");
+                    let autoSlide = setInterval(() => showImage(index + 1), 3000);
+
+                    prevBtn.addEventListener("click", function() {
+                        clearInterval(autoSlide);
+                        showImage(index - 1);
+                    });
+                    nextBtn.addEventListener("click", function() {
+                        clearInterval(autoSlide);
+                        showImage(index + 1);
+                    });
+                    
+                    //This section is for the lightbox (image display)
+                    images.forEach(img => {
+                        img.addEventListener("click", function() {
+                            lightboxImg.src = this.src;
+                            lightbox.classList.add("active");
+                        });
+                    });
+
+                    lightbox.addEventListener("click", function() {
+                        lightbox.classList.remove("active");
+                    });
+
+                    window.addEventListener('scroll', function() {
+                        let parallax = document.querySelector('.parallax');
+                        let scrollPosition = window.scrollY;
+                        parallax.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+                    });
+        });
+
+    </script>
+</head>
+
+<body style="background-color:#250f33;">
+    <container>
+    <header class="bg"> <!--Social media links. Delete/add as needed. Itch would be a good one to add.-->
+        <section id="social">
+            <a href="https://www.youtube.com/@WavesAndWizards" target="_blank"><img src="img/youtube.png"></a>
+            <a href="https://x.com/WavesAndWizards" target="_blank"><img src="img/x.png" ></a>
+            <a href="https://www.instagram.com/wavesandwizards/" target="_blank"><img src="img/insta.png"></a>
+            <a href="https://github.com/Gamingvscake/Wizard-game" target="_blank"><img src="img/github.png"></a>
+    </section>
+        <!-- Change the src to your game logo -->
+        <img src="img/logo.png" alt="Game Logo" class="logo">
+		<img src="img/studiologov2.png" alt="Game Logo" class="otherlogo">
+        <!-- Change this to your game's title if not using a graphical logo.
+            You may want to add some style to the <h1>-->
+        <!--<h1>Demo Game of Awesomeness</h1>-->
+        
+        <!--Sub-heading blurb for the game-->
+        <div id="game_description">
+            <p>Gather your friends, prepare your potions, and ready your staffs wizards. Hordes of monster are coming, and you must conjure your strength to survive.</p>
+        </div>
+
+        <!-- Image carousel - Replace the image URLs with your game screenshots -->
+        <!-- Duplicate an <img src line to add more-->
+
+        <div class="carousel">
+            <img src="img/screenshot1Wtext.png" alt="Screenshot 1">
+            <img src="img/screenshot2Wtext.png" alt="Screenshot 2">
+            <img src="img/screenshot3Wtext.png" alt="Screenshot 3">
+            <img src="img/screenshot4Wtext.png" alt="Screenshot 4">
+            <img src="img/screenshot5Wtext.png" alt="Screenshot 5">
+        </div>
+        <hr>
+    </header>
+</container>
+    
+    <!--You can comment this section out if you don't want the parallax effect. Just know that your website loses 3765 cool points though.-->
+    <section class="parallax">
+        <p>This ensemble of enchanters are ready to kick ass and cast spells!</p>
+    </section>
+
+    
+    <!--This is for a long description of your game. You could also substitute a list of features using <ul> and <li>-->
+    <section class="details">
+        <h2 style="color:white;">About the Game</h2>
+        <p style="color:white;">Waves and Wizards is a fast paced four player FPS wave based game. </p>
+		<p style="color:white;">Players must work together to survive for as long as they can. </p>
+		<p style="color:white;">Switching staffs, purchasing upgrades and progressing  through the level by collecting points.</p>
+    </section>
+	<header class="imagetest">
+		<section>
+            <h1 style="color:white;">EPIC MAGICAL TRAILER!!!</h1>
+		<video controls autoplay src="TrailerVideo/Trailer.mp4" width="1200"></video>
+		
+		
+		
+		<h1 style="color:white;">Unlock new spells and staffs as you cast your way through the hordes of monsters, and travel across the land to defeat the necromancer and end the onslaught of monsters once and for all!</h1>
+		</section>
+	<section>
+	<img src="img/CharactersV2.png" alt="Characters">
+	<h1 style="color:white;">Join the wizards in their fight against the creatures of the night in Waves and Wizards!</h1>
+	<!--<p style="color:white;">TEMPORARY PLACEHOLDER DESCRIPTION</p>>-->
+	</section>
+	<section>
+	<img src="img/designers.png" alt="Designers">
+	<!--<p style="color:white;">TEMPORARY PLACEHOLDER DESCRIPTION</p>-->
+	</section>
+	</header>
+    <br>
+    <hr>
+    <br>
+    <!--Another section that can be removed. While awaiting your Game Awards nominations, display quotes from your testers, perhaps?-->
+    <section class="awards">
+        <h2 style="margin: 5px; padding: 5px; color: white;">Awards & Reviews</h2>
+        <div class="awards-container">
+            <div class="award-item" style="color:white;">"This is the cooperative shooter of the decade, you not find more personality and charm in any game in the last two decades"  - Linda Flossberg</div>
+            <div class="award-item" style="color:white;">"Those wizards look amazing!" - John Timbit</div>
+            <div class="award-item" style="color:white;">"The game is fun, interactive and engaging!" - Mystery J</div>
+            <div class="award-item" style="color:white;">"The perfect intersection of fantasy and multiplayer horde shooters. This strong contender for game of the year is an instant cult classic" - Gus Town, Knight Wave co-founder</div>
+        </div><br><br>
+        <!--Be sure to remove this, unless you want Mark's brother to get credit on every logo.-->
+        <p style="float: right; color: white;">Logo Credit: Luke Fantini, 2025</p>
+    </section>
+</body>
+<footer>
+    
+</footer>
+</html>
